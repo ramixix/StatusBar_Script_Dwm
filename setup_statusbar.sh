@@ -15,14 +15,18 @@ export SEP="|"
 
 
 # Import the modules
-. "$FUNC_DIR/bar_functions/dwm_alsa.sh"
+. "$FUNC_DIR/bar_functions/dwm_date_time.sh"
+. "$FUNC_DIR/bar_functions/dwm_volume_alsa.sh"
+. "$FUNC_DIR/bar_functions/dwm_battery.sh"
 
 # Update dwm status bar every second
 while true
 do
     # Append results of each func one by one to the statusbar string
-    status_bar=""
-    status_bar="$status_bar$(dwm_alsa) $SEP "
+    status_bar=" "
+    status_bar="$status_bar$(dwm_volume_alsa) $SEP "
+    status_bar="$status_bar$(dwm_battery) $SEP "
+    status_bar="$status_bar$(dwm_date_time)  "
     
     xsetroot -name "$status_bar"
     sleep 1
