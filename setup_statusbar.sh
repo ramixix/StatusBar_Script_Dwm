@@ -1,6 +1,6 @@
 #!/bin/bash
-# Dependencies: xorg-xsetroot
 
+# Dependencies: xorg-xsetroot
 
 # Store the directory where scripts are running from
 LOC=$(readlink -f "$0")
