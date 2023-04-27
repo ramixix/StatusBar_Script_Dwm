@@ -21,17 +21,39 @@ export SEP="|"
 . "$FUNC_DIR/bar_functions/dwm_brightness.sh"
 . "$FUNC_DIR/bar_functions/dwm_battery.sh"
 
-# Update dwm status bar every second
-while true
-do
-    # Append results of each func one by one to the statusbar string
-    status_bar=" "
-    status_bar="$status_bar$(dwm_volume_alsa) $SEP "
-    status_bar="$status_bar$(dwm_brightness) $SEP "
-    status_bar="$status_bar$(dwm_battery) $SEP "
-    status_bar="$status_bar$(dwm_private_ip) $SEP "
-    status_bar="$status_bar$(dwm_date_time)  "
+
+# Initialize variables with initial values
+volume=$(dwm_volume_alsa)
+brightness=$(dwm_brightness)
+battery=$(dwm_battery)
+private_ip=$(dwm_private_ip)
+date_time=$(dwm_date_time)
+
+while true; do
+    # Update volume every 1 second
+    volume=$(dwm_volume_alsa)
+    status_bar=" $volume $SEP "
+
+    # Update other functions every 60 seconds
+    if (( SECONDS % 60 == 0 )); then
+        brightness=$(dwm_brightness)
+        battery=$(dwm_battery)
+        private_ip=$(dwm_private_ip)
+        date_time=$(dwm_date_time)
+    fi
     
+    # Append all function outputs to status bar
+    status_bar="$status_bar$brightness $SEP "
+    status_bar="$status_bar$battery $SEP "
+    status_bar="$status_bar$private_ip $SEP "
+    status_bar="$status_bar$date_time "
+
+    # Update the status bar
     xsetroot -name "$status_bar"
+
+    # Wait for 1 second before repeating the loop
     sleep 1
 done
+
+
+
