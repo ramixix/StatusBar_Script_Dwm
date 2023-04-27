@@ -16,6 +16,7 @@ export SEP="|"
 
 # Import the modules
 . "$FUNC_DIR/bar_functions/dwm_date_time.sh"
+. "$FUNC_DIR/bar_functions/dwm_private_ip.sh"
 . "$FUNC_DIR/bar_functions/dwm_volume_alsa.sh"
 . "$FUNC_DIR/bar_functions/dwm_brightness.sh"
 . "$FUNC_DIR/bar_functions/dwm_battery.sh"
@@ -28,6 +29,7 @@ do
     status_bar="$status_bar$(dwm_volume_alsa) $SEP "
     status_bar="$status_bar$(dwm_brightness) $SEP "
     status_bar="$status_bar$(dwm_battery) $SEP "
+    status_bar="$status_bar$(dwm_private_ip) $SEP "
     status_bar="$status_bar$(dwm_date_time)  "
     
     xsetroot -name "$status_bar"
