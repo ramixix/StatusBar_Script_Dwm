@@ -1,0 +1,4 @@
+alsa-utils
+xsetroot
+xorg-xrandr
+nmcli

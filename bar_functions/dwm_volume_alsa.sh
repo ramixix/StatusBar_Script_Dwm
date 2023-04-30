@@ -1,7 +1,8 @@
 #!/bin/sh
+# Requirement: alsa-utils
+
 # Show the master volume of ALSA
 
-# Dependencies: alsa-utils
 dwm_volume_alsa () {
 	STATUS=$(amixer sget Master | tail -n1 | sed -r "s/.*\[(.*)\]/\1/")
     VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")

@@ -27,4 +27,3 @@ dwm_battery () {
         printf "BAT %s%% %s" "$CHARGE" "$STATUS"
     fi
 }
-

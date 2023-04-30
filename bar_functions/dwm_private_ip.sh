@@ -1,8 +1,7 @@
 #!/bin/sh
+# Requirement: nmcli
 
 # Show the private ip address(es) 
-
-# Dependencies: nmcli
 
 dwm_private_ip(){
     # read all private IPs (exclude the 127.* ones) and put into a variable called Private_IPs

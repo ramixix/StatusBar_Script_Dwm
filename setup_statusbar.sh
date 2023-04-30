@@ -23,20 +23,18 @@ export SEP="|"
 
 
 # Initialize variables with initial values
-volume=$(dwm_volume_alsa)
-brightness=$(dwm_brightness)
 battery=$(dwm_battery)
 private_ip=$(dwm_private_ip)
 date_time=$(dwm_date_time)
 
 while true; do
-    # Update volume every 1 second
+    # Update volume and brightness every 1 second
+    brightness=$(dwm_brightness)
     volume=$(dwm_volume_alsa)
     status_bar=" $volume $SEP "
 
     # Update other functions every 60 seconds
     if (( SECONDS % 60 == 0 )); then
-        brightness=$(dwm_brightness)
         battery=$(dwm_battery)
         private_ip=$(dwm_private_ip)
         date_time=$(dwm_date_time)
